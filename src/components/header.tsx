@@ -1,21 +1,11 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Badge from '@mui/material/Badge';
+import { AppBar, Box, IconButton, Typography, Menu, Container, Avatar, Badge, Tooltip, MenuItem, Toolbar } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from '@mui/material/styles';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function ResponsiveAppBar() {
+function Header() {
   const theme = useTheme();
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -29,12 +19,12 @@ function ResponsiveAppBar() {
 
   return (
 
-    <AppBar position="static" style={{ background: theme.palette.primary.light }}>
+    <AppBar elevation={0} position="static" style={{ background: theme.palette.primary.light }}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters sx={{ justifyContent: 'flex-end' }}>
 
           <IconButton size="small" style={{ color: theme.palette.primary.main }}>
-            <Typography variant="h6" sx={{ fontWeight: 700 }} >
+            <Typography variant="h6" sx={{ fontWeight: 600, }} >
               EN
             </Typography>
           </IconButton>
@@ -84,4 +74,4 @@ function ResponsiveAppBar() {
 
   );
 }
-export default ResponsiveAppBar;
+export default Header;
