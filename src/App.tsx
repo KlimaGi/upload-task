@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, CssBaseline, Paper, Typography } from "@mui/material";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './styles/main-styles.css';
-import { height } from '@mui/system';
+import ResponsiveAppBar from './components/header';
 
 
 function App() {
@@ -22,15 +22,15 @@ function App() {
       },
     },
   });
-  // background="linear-gradient(to right bottom, #fcf6fc, #d8aad5)"
 
   return (
     <div className='container'>
 
       <ThemeProvider theme={theme} >
         <CssBaseline />
+        <ResponsiveAppBar />
         <Box
-          height="100vh"
+          height="90vh"
           display="flex"
           justifyContent="center"
           alignItems="center"
