@@ -4,9 +4,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import Header from './header';
-import MainBlock from './main-block';
+import MainBlock from '../main-block';
 import { useTheme } from '@mui/material/styles';
-
 
 const drawerWidth = 240;
 
@@ -25,6 +24,7 @@ export default function PermanentDrawerLeft() {
         sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
       >
         <Header />
+
       </AppBar>
 
       <Drawer
