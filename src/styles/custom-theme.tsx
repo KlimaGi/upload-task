@@ -14,5 +14,23 @@ export const theme = createTheme({
             dark: '#d8aad5', // sviesi purple fonui
             contrastText: '#0fab5b', // green
         },
+
+
     },
+    components: {
+        MuiListItem: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#ffffff',
+                    color: '#91128b',
+                    '&.Mui-selected': {
+                        backgroundColor: '#d8aad5',
+                        color: '#91128b'
+                    },
+                },
+            },
+        },
+
+    }
+
 });
