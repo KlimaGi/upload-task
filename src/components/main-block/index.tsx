@@ -52,3 +52,8 @@ export default function MainBlock() {
   )
 }
 
+// pritaikyti plain css - ten kur corner case reikalingi mui, islaikyti paprastuma ir aiskuma projekto
+// drag and drop logika
+// upload files
+// saugojimas su redux
+// api call for person icon
