@@ -15,7 +15,6 @@ export const theme = createTheme({
             contrastText: '#0fab5b', // green
         },
 
-
     },
     components: {
         MuiListItem: {
@@ -31,6 +30,7 @@ export const theme = createTheme({
             },
         },
 
-    }
+    },
+
 
 });
