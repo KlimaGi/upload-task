@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Paper, Typography, FormControl, Radio, Select, MenuItem } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useTheme } from '@mui/material/styles';
 import { SelectChangeEvent } from '@mui/material/Select';
+import UploadBlock from './upload-block';
 
 export default function MainBlock() {
   const theme = useTheme();
@@ -45,6 +47,7 @@ export default function MainBlock() {
           <div className='left-box'>
             <div className='container'>
               <Typography variant='body2'>Type of Documents</Typography>
+
 
               <div className='d-flex'>
                 <Radio
@@ -101,7 +104,17 @@ export default function MainBlock() {
 
             </div>
           </div>
-          <div className='right-box'></div>
+          {/* ------- right side --------- */}
+          <div className='right-box'>
+
+            <div className='upload-container'>
+              <UploadBlock />
+            </div>
+
+
+
+
+          </div>
         </div>
 
       </Paper>
