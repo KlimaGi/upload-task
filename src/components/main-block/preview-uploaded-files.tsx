@@ -7,7 +7,7 @@ const PreviewUploadedFiles = () => {
   const [expanded, setExpanded] = React.useState(false);
   return (
     <div className='box-paper'>
-      <div className={`acordion ${expanded && 'acordion--preview-block'} `}>
+      <div className={`accordion ${expanded && 'accordion--preview-block'} `}>
         {
           !expanded &&
           <button className='btn' onClick={() => setExpanded(!expanded)}>
@@ -28,11 +28,10 @@ const PreviewUploadedFiles = () => {
           </div>
         }
 
-
         {
           expanded
-            ? <span onClick={() => setExpanded(!expanded)} className='acordion-row'> <KeyboardArrowUpIcon />  </span>
-            : <span onClick={() => setExpanded(!expanded)} className='acordion-row'> <KeyboardArrowDownIcon /> </span>
+            ? <span onClick={() => setExpanded(!expanded)} className='accordion-row'> <KeyboardArrowUpIcon />  </span>
+            : <span onClick={() => setExpanded(!expanded)} className='accordion-row'> <KeyboardArrowDownIcon /> </span>
         }
 
       </div>

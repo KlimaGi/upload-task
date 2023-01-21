@@ -7,7 +7,7 @@ export default function UploadBlock() {
 
   return (
     <div className='box-paper' >
-      <div className='acordion'>
+      <div className='accordion'>
         <button className='btn' onClick={() => setExpanded(!expanded)}>
           <span className={expanded ? 'hide' : ""}>
             Select more files for upload
@@ -22,10 +22,10 @@ export default function UploadBlock() {
         </button>
         {
           expanded
-          && <div className='acordion-item'>
+          && <div className='accordion-item'>
             <h4>Select files</h4>
             <p>Drop files here or click browse</p>
-
+            <img src='assets/select-file-img.jpg' alt='select file' />
           </div>
         }
       </div>
