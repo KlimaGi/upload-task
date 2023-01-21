@@ -4,6 +4,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useTheme } from '@mui/material/styles';
 import { SelectChangeEvent } from '@mui/material/Select';
 import UploadBlock from './upload-block';
+import PreviewUploadedFiles from './preview-uploaded-files';
 
 export default function MainBlock() {
   const theme = useTheme();
@@ -103,12 +104,22 @@ export default function MainBlock() {
               </div>
 
             </div>
+
+            <div className='container'>
+              <Typography variant='body2'>List of uploads</Typography>
+
+            </div>
+
           </div>
           {/* ------- right side --------- */}
           <div className='right-box'>
 
             <div className='upload-container'>
               <UploadBlock />
+            </div>
+
+            <div>
+              <PreviewUploadedFiles />
             </div>
 
 
