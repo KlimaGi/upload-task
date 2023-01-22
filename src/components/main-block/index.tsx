@@ -4,7 +4,8 @@ import { useTheme } from '@mui/material/styles';
 import { SelectChangeEvent } from '@mui/material/Select';
 import UploadBlock from './upload-block';
 import PreviewUploadedFiles from './preview-uploaded-files';
-import { FileList } from './drop-file-zone/file-list';
+import { FileList } from './upload-block/drop-file-zone/file-list';
+import ListOfUploads from './list-of-uploads';
 
 export default function MainBlock() {
   const theme = useTheme();
@@ -106,7 +107,8 @@ export default function MainBlock() {
             </div>
 
             <div className='container'>
-              <Typography variant='body2'>List of uploads</Typography>
+              {/* get results list from uploadBlock */}
+              <ListOfUploads />
 
             </div>
 
