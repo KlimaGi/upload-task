@@ -1,4 +1,5 @@
 import React, { memo, PropsWithChildren, useRef, useState, useCallback, useEffect } from 'react';
+import localForage from 'localforage';
 
 export interface DropZoneProps {
   onDragStateChange?: (isDragActive: boolean) => void
@@ -24,7 +25,7 @@ export const DropZone = memo(
     const dropZoneRef = useRef<null | HTMLDivElement>(null);
 
     const handleDragIn = useCallback(
-      (event) => {
+      (event: any) => {
         event.preventDefault();
         event.stopPropagation();
         onDragIn?.();
@@ -36,9 +37,8 @@ export const DropZone = memo(
       [onDragIn]
     );
 
-
     const handleDragOut = useCallback(
-      (event: { preventDefault: () => void; stopPropagation: () => void; }) => {
+      (event: any) => {
         event.preventDefault();
         event.stopPropagation();
         onDragOut?.();
@@ -48,7 +48,7 @@ export const DropZone = memo(
     );
 
     const handleDrag = useCallback(
-      (event: { preventDefault: () => void; stopPropagation: () => void; }) => {
+      (event: any) => {
         event.preventDefault();
         event.stopPropagation();
         onDrag?.();
@@ -57,16 +57,19 @@ export const DropZone = memo(
       [isDragActive, onDrag]
     );
 
-    const mapFileListToArray = (files: FileList) => {
-      const array = [];
-      for (let i = 0; i < files.length; i++) {
-        array.push(files.item(i))
-      }
-      return array;
-    };
+    // type IMapFileListToArray = {
+    //   (files: FileList): File[]
+    // }
+    // const mapFileListToArray: IMapFileListToArray = (files) => {
+    //   const array = [];
+    //   for (let i = 0; i < files.length; i++) {
+    //     array.push(files.item(i))
+    //   }
+    //   return array;
+    // };
 
     const handleDrop = useCallback(
-      (event) => {
+      (event: any) => {
         event.preventDefault()
         event.stopPropagation()
 
@@ -74,9 +77,12 @@ export const DropZone = memo(
         onDrop?.();
 
         if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
-          const files = mapFileListToArray(event.dataTransfer.files);
+          const file = event.dataTransfer.files;
+          console.log('event.dataTransfer.files', event.dataTransfer.files[0].name);
+          console.log('files', file);
+          localForage.setItem(`${file[0].name}`, file);
 
-          onFilesDrop?.(files);
+          onFilesDrop?.(file);
           event.dataTransfer.clearData();
         }
       },

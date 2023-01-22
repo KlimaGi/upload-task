@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Box, Paper, Typography, FormControl, Radio, Select, MenuItem } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { SelectChangeEvent } from '@mui/material/Select';
-import UploadBlock from './upload-block';
+import { UploadBlock } from './upload-block';
 import PreviewUploadedFiles from './preview-uploaded-files';
-import { FileList } from './upload-block/drop-file-zone/file-list';
 import ListOfUploads from './list-of-uploads';
 
-export default function MainBlock() {
+export const MainBlock = () => {
   const theme = useTheme();
-  const [selectedValue, setSelectedValue] = React.useState('a');
+  const [selectedValue, setSelectedValue] = useState('a');
+  const [uploadActive, setUploadActive] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
@@ -108,7 +108,11 @@ export default function MainBlock() {
 
             <div className='container'>
               {/* get results list from uploadBlock */}
-              <ListOfUploads />
+              {
+                uploadActive &&
+                <ListOfUploads uploadActive={uploadActive} />
+              }
+
 
             </div>
 
@@ -117,7 +121,7 @@ export default function MainBlock() {
           <div className='right-box'>
 
             <div className='upload-container'>
-              <UploadBlock />
+              <UploadBlock setUploadActive={setUploadActive} />
             </div>
 
             <div>

@@ -1,6 +1,5 @@
 import React, { memo, useState, useCallback } from 'react';
 import { DropZone } from './drop-zone';
-import { FileList } from './file-list';
 
 export const DropFileZone = memo(() => {
   const [isDropActive, setIsDropActive] = useState(false);
@@ -12,6 +11,7 @@ export const DropFileZone = memo(() => {
 
   const onFilesDrop = useCallback((files: File[]) => {
     setFiles(files);
+    console.log('files--', files);
   }, []);
 
   return (
@@ -26,7 +26,6 @@ export const DropFileZone = memo(() => {
           <img src='assets/select-file-img.jpg' alt='select file' />
         </div>
 
-        <FileList files={files} />
       </DropZone>
     </div>
   )

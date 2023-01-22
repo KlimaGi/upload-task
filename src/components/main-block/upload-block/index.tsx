@@ -1,10 +1,18 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { DropFileZone } from './drop-file-zone';
 
-export default function UploadBlock() {
-  const [expanded, setExpanded] = React.useState(false);
+type IUploadBlock = {
+  setUploadActive: Function
+}
+
+export const UploadBlock: React.FC<IUploadBlock> = ({ setUploadActive }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    setUploadActive(true);
+  }, [expanded]);
 
   return (
     <div className='box-paper' >
