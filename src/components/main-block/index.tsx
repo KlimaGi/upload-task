@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Paper, Typography, FormControl, Radio, Select, MenuItem } from '@mui/material';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useTheme } from '@mui/material/styles';
 import { SelectChangeEvent } from '@mui/material/Select';
 import UploadBlock from './upload-block';
 import PreviewUploadedFiles from './preview-uploaded-files';
+import { FileList } from './drop-file-zone/file-list';
 
 export default function MainBlock() {
   const theme = useTheme();
@@ -45,10 +45,10 @@ export default function MainBlock() {
         }}
       >
         <div className='d-flex'>
+
           <div className='left-box'>
             <div className='container'>
               <Typography variant='body2'>Type of Documents</Typography>
-
 
               <div className='d-flex'>
                 <Radio

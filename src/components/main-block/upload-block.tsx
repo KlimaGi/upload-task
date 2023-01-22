@@ -1,6 +1,7 @@
 import * as React from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { DropFileZone } from './drop-file-zone';
 
 export default function UploadBlock() {
   const [expanded, setExpanded] = React.useState(false);
@@ -22,19 +23,13 @@ export default function UploadBlock() {
         </button>
         {
           expanded
-          && <div className='accordion-item'>
-            <h4>Select files</h4>
-            <p>Drop files here or click browse</p>
-            <img src='assets/select-file-img.jpg' alt='select file' />
-          </div>
+          &&
+          <DropFileZone />
+
         }
       </div>
 
     </div>
-
-
-
-
 
   );
 }
