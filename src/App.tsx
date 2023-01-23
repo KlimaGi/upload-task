@@ -7,14 +7,16 @@ import Toolbar from './components/toolbar';
 function App() {
 
   return (
-    <Box sx={{ background: 'linear-gradient(to right bottom, #fcf6fc, #d8aad5)', height: '100vh', width: '100vw' }}>
-      <ThemeProvider theme={theme} >
-        <CssBaseline />
+    <div className='root-container'>
+      <Box sx={{ background: 'linear-gradient(to right bottom, #fcf6fc, #d8aad5)', height: '100vh', width: '100vw' }}>
+        <ThemeProvider theme={theme} >
+          <CssBaseline />
 
-        <Toolbar />
+          <Toolbar />
 
-      </ThemeProvider>
-    </Box>
+        </ThemeProvider>
+      </Box>
+    </div>
   );
 }
 

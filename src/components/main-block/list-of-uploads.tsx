@@ -10,6 +10,7 @@ type IListOfUploads = {
 
 const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
   const [filesNames, setFilesNames] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     localForage.keys().then(function (keys: any) {
@@ -17,11 +18,43 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
       console.log("keys", keys);
       setFilesNames(keys);
     }).catch(function (err: any) {
-      // This code runs if there were any errors
       console.log(err);
     });
   }, [uploadActive])
 
+  useEffect(() => {
+    localForage.getItem('cloud.png').then(function (value) {
+      // This code runs once the value has been loaded
+      // from the offline store.
+      console.log(value);
+      console.log('value---', value);
+    }).catch(function (err) {
+      // This code runs if there were any errors
+      console.log(err);
+    });
+  }, []);
+
+  const handleRemoveItem = (name: string) => {
+    localForage.removeItem(name).then(function () {
+      // Run this code once the key has been removed.
+      console.log('Key is cleared!');
+    }).catch(function (err) {
+      console.log(err);
+    });
+  }
+
+  const handleRemoveAll = () => {
+    setShowPopup(true);
+  }
+  const handleRemoveAllPermanently = () => {
+    setShowPopup(false);
+    localForage.clear().then(function () {
+      // Run this code once the database has been entirely deleted.
+      console.log('Database is now empty.');
+    }).catch(function (err) {
+      console.log(err);
+    });
+  }
 
 
   return (
@@ -36,10 +69,12 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
               <span>{name}</span>
 
               <div className='btn-container'>
-                <button>
+                <button >
                   <EditOutlinedIcon sx={{ color: '#62727f' }} />
                 </button>
-                <button>
+                <button
+                  onClick={() => handleRemoveItem(name)}
+                >
                   <DeleteOutlineOutlinedIcon sx={{ color: '#62727f' }} />
                 </button>
               </div>
@@ -49,8 +84,29 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
         }
       </ul>
       <div className='clear-btn-container'>
-        <button className='btn-clear'>Clear all</button>
+        <button
+          onClick={handleRemoveAll}
+          className='btn-clear'
+        >Clear all</button>
       </div>
+      {
+        showPopup &&
+        <div className='clear-module--wrapper'>
+          <div className='clear-module'>
+            <p>Are you sure you want to delete all files? You'll have to start uploading process from the very beginning.</p>
+            <div className='clear-module--btn-container'>
+
+              <button
+                className='green-btn green-btn--outline'
+                onClick={() => setShowPopup(false)}>Cancel</button>
+              <button
+                className='green-btn green-btn--filled'
+                onClick={handleRemoveAllPermanently}
+              >Confirm</button>
+            </div>
+          </div>
+        </div>
+      }
 
     </div>
   )

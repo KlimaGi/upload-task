@@ -6,6 +6,7 @@ import PreviewOutlinedIcon from '@mui/icons-material/PreviewOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import localForage from 'localforage';
 
 const PreviewUploadedFiles = () => {
   const [expanded, setExpanded] = React.useState(false);
