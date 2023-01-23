@@ -20,19 +20,7 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
     }).catch(function (err: any) {
       console.log(err);
     });
-  }, [uploadActive])
-
-  useEffect(() => {
-    localForage.getItem('cloud.png').then(function (value) {
-      // This code runs once the value has been loaded
-      // from the offline store.
-      console.log(value);
-      console.log('value---', value);
-    }).catch(function (err) {
-      // This code runs if there were any errors
-      console.log(err);
-    });
-  }, []);
+  }, [uploadActive]);
 
   const handleRemoveItem = (name: string) => {
     localForage.removeItem(name).then(function () {
