@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@200;400;500&display=swap');
+
 :root{
   --color-grey-pr-main: #62727f;
   --color-white-pr-light: #ffffff;
@@ -16,6 +18,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Public Sans', sans-serif;
 }
 
 .d-flex {
@@ -45,8 +48,8 @@
   gap: 1rem;
 }
 .box-paper{
-  box-shadow: -1px 3px 5px 1px var(--color-light-grey);
-  border: 1px solid var(--color-light-grey);
+  box-shadow: 0 3px 5px 1px var(--color-light-grey);
+  /* border: 1px solid var(--color-light-grey); */
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -136,9 +139,7 @@
 .accordion--preview-block{
   padding-bottom: 2rem;
 }
-.list-item {
-  /* border: 1px solid pink; */
-}
+
 
 /* ------- */
 .btn-link{
@@ -146,10 +147,86 @@
   cursor: pointer;
   border-bottom: 1px solid var(--color-purple-pr-contrast);
   color: var(--color-purple-pr-contrast);
-  background-color: var(--color-white-pr-light);
+  background-color: #ffffff00;
   font-size: 1rem;
   padding-bottom: 1px;
 }
 .btn-link:focus-visible{
 border-style: none;
+}
+
+ul.ul{
+list-style-type: none;
+
+}
+ul.ul>:first-child{
+  background-color: var(--color-purple-bg-sec-dark);
+}
+.list-item {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  box-shadow: 0 0 3px 1px var(--color-light-grey);
+    border-radius: 8px;
+    color: var(--color-grey-pr-main);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.list-item:active{
+  background-color: var(--color-purple-bg-sec-dark);
+}
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+ 
+}
+.btn-container>button{
+  border-style: none;
+  background-color: #ffffff00;
+  cursor: pointer;
+}
+button:focus-visible{
+  border-style: none;
+
+}
+
+.clear-btn-container{
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-clear{
+  border-style: none;
+  border-bottom: 1px solid var(--color-grey-black-pr-dark);
+  background-color: #ffffff00;
+  margin: 0.5rem;
+}
+
+
+.preview-file-name-container {
+    display: flex;
+    color: var(--color-grey-pr-main);
+    font-weight: bold;
+    align-self: center;
+}
+.preview-file-name-container>button {
+    border-style: none;
+    background-color: var(--color-white-pr-light);
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 1.5rem;
+    
+}
+.preview-file-name-container>span{
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.preview-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
 }

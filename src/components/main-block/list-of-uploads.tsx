@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Typography } from '@mui/material';
 import localForage from 'localforage';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 type IListOfUploads = {
   uploadActive: boolean
@@ -23,19 +25,33 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
 
 
   return (
-    <div>
+    <div className=''>
       <Typography variant='body2'>List of uploads</Typography>
 
-      <ul>
+      <ul className='ul'>
         {
           filesNames.length > 0 &&
           filesNames.map((name) => (
-            <li key={name}>
+            <li className='list-item' key={name}>
               <span>{name}</span>
+
+              <div className='btn-container'>
+                <button>
+                  <EditOutlinedIcon sx={{ color: '#62727f' }} />
+                </button>
+                <button>
+                  <DeleteOutlineOutlinedIcon sx={{ color: '#62727f' }} />
+                </button>
+              </div>
+
             </li>
           ))
         }
       </ul>
+      <div className='clear-btn-container'>
+        <button className='btn-clear'>Clear all</button>
+      </div>
+
     </div>
   )
 }
