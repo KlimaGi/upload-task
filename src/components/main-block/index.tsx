@@ -13,14 +13,12 @@ export const MainBlock = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
-    console.log('selectedValue', selectedValue);
   };
 
   const [selected, setSelected] = useState('');
   const handleSelectChange = (event: SelectChangeEvent) => {
     setSelected(event.target.value);
     setSelectedValue('b');
-    console.log('selectedValue', selectedValue);
   };
 
 
@@ -50,7 +48,6 @@ export const MainBlock = () => {
           <div className='left-box'>
             <div className='container'>
               <Typography variant='body2'>Type of Documents</Typography>
-
               <div className='d-flex'>
                 <Radio
                   checked={selectedValue === 'a'}
@@ -83,15 +80,13 @@ export const MainBlock = () => {
                     },
                   }}
                 />
-
-                <FormControl sx={{ m: 1, minWidth: '82%', boxShadow: '-1px 3px 5px 1px #d7d9db', borderRadius: '8px' }}>
-
+                <FormControl sx={{ my: 1, borderRadius: '8px', flex: 1 }}>
                   <Select
                     value={selected}
                     onChange={handleSelectChange}
                     displayEmpty
                     inputProps={{ 'aria-label': 'Without label' }}
-                    sx={{ height: '2rem', borderRadius: '8px', }}
+                    sx={{ height: '2rem', borderRadius: '8px', boxShadow: '0 3px 5px 1px #d7d9db' }}
                   >
                     <MenuItem value="">
                       <em>Other values</em>
@@ -100,37 +95,25 @@ export const MainBlock = () => {
                     <MenuItem value='2'>Other 2</MenuItem>
                     <MenuItem value='3'>Other 3</MenuItem>
                   </Select>
-
                 </FormControl>
               </div>
-
             </div>
 
             <div className='container'>
-              {/* get results list from uploadBlock */}
               {
                 uploadActive &&
                 <ListOfUploads uploadActive={uploadActive} />
               }
-
-
             </div>
-
           </div>
           {/* ------- right side --------- */}
           <div className='right-box'>
-
-            <div className='upload-container'>
+            <div>
               <UploadBlock setUploadActive={setUploadActive} />
             </div>
-
             <div>
               <PreviewUploadedFiles />
             </div>
-
-
-
-
           </div>
         </div>
 
@@ -141,9 +124,5 @@ export const MainBlock = () => {
 
 // veikia check radio & select as subselect, but need to add logic for forward logic
 
-// pritaikyti plain css - ten kur corner case reikalingi mui, islaikyti paprastuma ir aiskuma projekto
-
-// drag and drop logika
-// upload files
 // saugojimas su redux
 // api call for person icon
