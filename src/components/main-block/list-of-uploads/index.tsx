@@ -35,7 +35,6 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
   const handleRemoveAllPermanently = () => {
     setShowPopup(false);
     localForage.clear().then(function () {
-      // Run this code once the database has been entirely deleted.
       console.log('Database is now empty.');
     }).catch(function (err) {
       console.log(err);

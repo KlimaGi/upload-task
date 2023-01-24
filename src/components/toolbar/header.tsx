@@ -1,13 +1,15 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Box, IconButton, Typography, Menu, Container, Avatar, Badge, Tooltip, MenuItem, Toolbar } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useTheme } from '@mui/material/styles';
+import axios from 'axios';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Header = () => {
   const theme = useTheme();
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const [userName, setUserName] = useState('');
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -16,6 +18,14 @@ const Header = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  useEffect(() => {
+    const baseURL = "https://jsonplaceholder.typicode.com/users";
+    axios.get(`${baseURL}/1`).then((response) => {
+      setUserName(response.data.name);
+    });
+  }, [])
+
 
   return (
     <AppBar elevation={0} position="static" style={{ background: theme.palette.primary.light }}>
@@ -41,7 +51,7 @@ const Header = () => {
           <Box sx={{ flexGrow: 0, mx: 2 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={userName} src="https://xsgames.co/randomusers/avatar.php?g=female" />
               </IconButton>
             </Tooltip>
             <Menu

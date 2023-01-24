@@ -137,7 +137,6 @@
   padding-bottom: 2rem;
 }
 
-
 /* ------- */
 .btn-link{
   border-style: none;
@@ -334,9 +333,9 @@ button:focus-visible{
   position: relative;
   top: calc( 6rem - 50vh);
   left: calc(30vw - 1rem);
-  }
+}
 
   
 .green-btn:focus-visible {
   border-style: none;
-  }
+}
