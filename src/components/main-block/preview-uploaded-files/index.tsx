@@ -96,4 +96,4 @@ const PreviewUploadedFiles = () => {
   )
 }
 
-export default PreviewUploadedFiles
+export default PreviewUploadedFiles;

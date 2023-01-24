@@ -25,4 +25,4 @@ const PopupClear: React.FC<IPopupClear> = ({ handleRemoveAllPermanently, setShow
   )
 }
 
-export default PopupClear
+export default PopupClear;

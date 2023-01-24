@@ -1,7 +1,7 @@
 import React, { memo, useState, useCallback } from 'react';
 import { DropZone } from './drop-zone';
 
-export const DropFileZone = memo(() => {
+const DropFileZone = memo(() => {
   const [isDropActive, setIsDropActive] = useState(false);
   const [files, setFiles] = React.useState<File[]>([]);
 
@@ -31,4 +31,4 @@ export const DropFileZone = memo(() => {
   )
 })
 
-DropFileZone.displayName = 'DropFileZone';
+export default DropFileZone;

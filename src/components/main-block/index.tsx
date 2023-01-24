@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Box, Paper, Typography, FormControl, Radio, Select, MenuItem } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { SelectChangeEvent } from '@mui/material/Select';
-import { UploadBlock } from './upload-block';
+import UploadBlock from './upload-block';
 import PreviewUploadedFiles from './preview-uploaded-files';
 import ListOfUploads from './list-of-uploads';
 
-export const MainBlock = () => {
+const MainBlock = () => {
   const theme = useTheme();
   const [selectedValue, setSelectedValue] = useState('a');
   const [uploadActive, setUploadActive] = useState(false);
@@ -20,7 +20,6 @@ export const MainBlock = () => {
     setSelected(event.target.value);
     setSelectedValue('b');
   };
-
 
   return (
     <Box
@@ -121,6 +120,8 @@ export const MainBlock = () => {
     </Box>
   )
 }
+
+export default MainBlock;
 
 // veikia check radio & select as subselect, but need to add logic for forward logic
 

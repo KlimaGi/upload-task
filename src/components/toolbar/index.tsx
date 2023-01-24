@@ -4,12 +4,12 @@ import HomeIcon from '@mui/icons-material/Home';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import Header from './header';
-import { MainBlock } from '../main-block';
+import MainBlock from '../main-block';
 import { useTheme } from '@mui/material/styles';
 
 const drawerWidth = 240;
 
-export default function PermanentDrawerLeft() {
+const PermanentDrawerLeft = () => {
   const theme = useTheme();
   const [value, setValue] = useState('one');
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -24,7 +24,6 @@ export default function PermanentDrawerLeft() {
         sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
       >
         <Header />
-
       </AppBar>
 
       <Drawer
@@ -40,7 +39,6 @@ export default function PermanentDrawerLeft() {
         variant="permanent"
         anchor="left"
       >
-
         <Box sx={{ width: '100%', marginTop: '4rem' }}>
           <Tabs
             value={value}
@@ -104,7 +102,7 @@ export default function PermanentDrawerLeft() {
   );
 }
 
-// todo: subuildinti dizaino elementus 
-// strukturos logika pritaikyti
+export default PermanentDrawerLeft;
+
 // api uzklausa su axios
 // redux pritaikyti

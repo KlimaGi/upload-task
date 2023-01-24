@@ -5,7 +5,7 @@ import { useTheme } from '@mui/material/styles';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function Header() {
+const Header = () => {
   const theme = useTheme();
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 

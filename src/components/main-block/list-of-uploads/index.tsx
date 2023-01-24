@@ -15,8 +15,6 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
 
   useEffect(() => {
     localForage.keys().then((keys: string[]) => {
-      // An array of all the key names.
-      console.log("keys", keys);
       setFilesNames(keys);
     }).catch(function (err: any) {
       console.log(err);
@@ -25,7 +23,6 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
 
   const handleRemoveItem = (name: string) => {
     localForage.removeItem(name).then(() => {
-      // Run this code once the key has been removed.
       console.log('Key is cleared!');
     }).catch(function (err) {
       console.log(err);
@@ -45,18 +42,15 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
     });
   }
 
-
   return (
     <div className=''>
       <Typography variant='body2'>List of uploads</Typography>
-
       <ul className='ul'>
         {
           filesNames.length > 0 &&
           filesNames.map((name) => (
             <li className='list-item' key={name}>
               <span>{name}</span>
-
               <div className='btn-container'>
                 <button >
                   <EditOutlinedIcon sx={{ color: '#62727f' }} />
@@ -67,7 +61,6 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
                   <DeleteOutlineOutlinedIcon sx={{ color: '#62727f' }} />
                 </button>
               </div>
-
             </li>
           ))
         }
@@ -83,9 +76,7 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
           handleRemoveAllPermanently={handleRemoveAllPermanently}
           setShowPopup={setShowPopup}
         />
-
       }
-
     </div>
   )
 }

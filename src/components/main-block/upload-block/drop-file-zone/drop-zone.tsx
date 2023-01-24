@@ -105,5 +105,3 @@ export const DropZone = memo(
     )
   }
 )
-
-DropZone.displayName = 'DropZone';
