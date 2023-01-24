@@ -57,17 +57,6 @@ export const DropZone = memo(
       [isDragActive, onDrag]
     );
 
-    // type IMapFileListToArray = {
-    //   (files: FileList): File[]
-    // }
-    // const mapFileListToArray: IMapFileListToArray = (files) => {
-    //   const array = [];
-    //   for (let i = 0; i < files.length; i++) {
-    //     array.push(files.item(i))
-    //   }
-    //   return array;
-    // };
-
     const handleDrop = useCallback(
       (event: any) => {
         event.preventDefault()
@@ -78,8 +67,6 @@ export const DropZone = memo(
 
         if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
           const file = event.dataTransfer.files;
-          console.log('event.dataTransfer.files', event.dataTransfer.files[0].name);
-          console.log('files', file);
           localForage.setItem(`${file[0].name}`, file);
 
           onFilesDrop?.(file);

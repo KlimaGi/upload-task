@@ -3,17 +3,18 @@ import { Typography } from '@mui/material';
 import localForage from 'localforage';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import PopupClear from './popup-clear';
 
 type IListOfUploads = {
   uploadActive: boolean
 }
 
 const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
-  const [filesNames, setFilesNames] = useState([]);
+  const [filesNames, setFilesNames] = useState<string[]>([]);
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    localForage.keys().then(function (keys: any) {
+    localForage.keys().then((keys: string[]) => {
       // An array of all the key names.
       console.log("keys", keys);
       setFilesNames(keys);
@@ -23,7 +24,7 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
   }, [uploadActive]);
 
   const handleRemoveItem = (name: string) => {
-    localForage.removeItem(name).then(function () {
+    localForage.removeItem(name).then(() => {
       // Run this code once the key has been removed.
       console.log('Key is cleared!');
     }).catch(function (err) {
@@ -78,22 +79,11 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
         >Clear all</button>
       </div>
       {
-        showPopup &&
-        <div className='module--wrapper'>
-          <div className='clear-module'>
-            <p>Are you sure you want to delete all files? You'll have to start uploading process from the very beginning.</p>
-            <div className='clear-module--btn-container'>
+        showPopup && <PopupClear
+          handleRemoveAllPermanently={handleRemoveAllPermanently}
+          setShowPopup={setShowPopup}
+        />
 
-              <button
-                className='green-btn green-btn--outline'
-                onClick={() => setShowPopup(false)}>Cancel</button>
-              <button
-                className='green-btn green-btn--filled'
-                onClick={handleRemoveAllPermanently}
-              >Confirm</button>
-            </div>
-          </div>
-        </div>
       }
 
     </div>
