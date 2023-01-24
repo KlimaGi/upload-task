@@ -7,42 +7,35 @@ import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import localForage from 'localforage';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const PreviewUploadedFiles = () => {
   const [expanded, setExpanded] = useState(false);
   const [filesNames, setFilesNames] = useState([]);
   const [currentFileIndex, setCurrentFileIndex] = useState(0);
+  const [preview, setPreview] = useState(false);
 
   const handlePrev = (currentFileIndex: number) => {
     if (currentFileIndex !== 0) setCurrentFileIndex(currentFileIndex - 1);
+    else setCurrentFileIndex(0);
   }
-
   const handleNext = (currentFileIndex: number) => {
-    if (currentFileIndex < filesNames.length) setCurrentFileIndex(currentFileIndex + 1);
+    if (currentFileIndex < filesNames.length - 1) setCurrentFileIndex(currentFileIndex + 1);
+    else setCurrentFileIndex(filesNames.length - 1);
   }
 
   useEffect(() => {
     localForage.keys().then(function (keys: any) {
       // An array of all the key names.
-      console.log("keys", keys);
       setFilesNames(keys);
     }).catch(function (err: any) {
       console.log(err);
     });
   }, [expanded]);
 
-  // for getting item
-  useEffect(() => {
-    localForage.getItem('cloud.png').then(function (value) {
-      // This code runs once the value has been loaded
-      // from the offline store.
-      console.log(value);
-      console.log('value---', value);
-    }).catch(function (err) {
-      // This code runs if there were any errors
-      console.log(err);
-    });
-  }, []);
+  const handleDownload = () => {
+    console.log('handle download');
+  }
 
   return (
     <div className='box-paper'>
@@ -53,7 +46,6 @@ const PreviewUploadedFiles = () => {
             <div className={expanded ? 'hide-no-space' : ""}>
               <Typography variant='body2'>Preview uploaded files</Typography>
             </div>
-
           </button>
         }
 
@@ -76,8 +68,11 @@ const PreviewUploadedFiles = () => {
               </div>
 
               <div className='btn-container'>
-                <button><PreviewOutlinedIcon sx={{ color: '#62727f' }} /></button>
-                <button><FileDownloadOutlinedIcon sx={{ color: '#62727f' }} /></button>
+                <button onClick={() => setPreview(true)}>
+                  <PreviewOutlinedIcon sx={{ color: '#62727f' }} />
+                </button>
+                <button onClick={() => handleDownload()}>
+                  <FileDownloadOutlinedIcon sx={{ color: '#62727f' }} /></button>
               </div>
             </div>
             <div className='preview-block'> </div>
@@ -91,7 +86,31 @@ const PreviewUploadedFiles = () => {
         }
 
       </div>
+      {
+        preview && <div className='module--wrapper'>
+          <div className='popup-window'>
 
+            <div className='popup--file-name'>
+              <span>{filesNames[currentFileIndex]}</span>
+            </div>
+
+            <div className='popup--content'>
+              <div className='popup-pages'></div>
+              <div className='popup-pages'></div>
+              <div className='popup-pages'></div>
+
+            </div>
+
+          </div>
+          <div>
+            <button
+              className='popup--x'
+              onClick={() => setPreview(false)}>
+              <ClearIcon sx={{ color: '#62727f' }} />
+            </button>
+          </div>
+        </div>
+      }
     </div>
   )
 }

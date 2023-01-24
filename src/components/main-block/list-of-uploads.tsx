@@ -79,7 +79,7 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
       </div>
       {
         showPopup &&
-        <div className='clear-module--wrapper'>
+        <div className='module--wrapper'>
           <div className='clear-module'>
             <p>Are you sure you want to delete all files? You'll have to start uploading process from the very beginning.</p>
             <div className='clear-module--btn-container'>
