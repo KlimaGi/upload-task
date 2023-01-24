@@ -10,16 +10,14 @@ const TypeOfDocuments = () => {
   const dispatch = useAppDispatch();
 
   const theme = useTheme();
-  const [selectedValue, setSelectedValue] = useState(fileType);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
     dispatch(setPdf());
   };
 
   const [selected, setSelected] = useState('');
   const handleSelectChange = (event: SelectChangeEvent) => {
     setSelected(event.target.value);
-    setSelectedValue('other');
     dispatch(unsetPdf());
   };
 
@@ -30,7 +28,7 @@ const TypeOfDocuments = () => {
       <Typography variant='body2'>Type of Documents</Typography>
       <div className='d-flex'>
         <Radio
-          checked={selectedValue === 'pdf'}
+          checked={fileType === 'pdf'}
           onChange={handleChange}
           value="pdf"
           name="radio-buttons"
@@ -48,7 +46,7 @@ const TypeOfDocuments = () => {
       </div>
       <div className='d-flex'>
         <Radio
-          checked={selectedValue === 'other'}
+          checked={fileType === 'other'}
           onChange={handleChange}
           value="other"
           name="radio-buttons"
