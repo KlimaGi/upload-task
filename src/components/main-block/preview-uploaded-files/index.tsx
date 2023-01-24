@@ -9,11 +9,16 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import localForage from 'localforage';
 import PopupFile from './popup-file';
 
-const PreviewUploadedFiles = () => {
+type IPreviewUploadedFiles = {
+  uploadActive: boolean
+}
+
+const PreviewUploadedFiles: React.FC<IPreviewUploadedFiles> = ({ uploadActive }) => {
   const [expanded, setExpanded] = useState(false);
   const [filesNames, setFilesNames] = useState([]);
   const [currentFileIndex, setCurrentFileIndex] = useState(0);
   const [preview, setPreview] = useState(false);
+  console.log('uploadActive', uploadActive);
 
   const handlePrev = (currentFileIndex: number) => {
     if (currentFileIndex !== 0) setCurrentFileIndex(currentFileIndex - 1);

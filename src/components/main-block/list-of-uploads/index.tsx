@@ -6,10 +6,11 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import PopupClear from './popup-clear';
 
 type IListOfUploads = {
-  uploadActive: boolean
+  uploadActive: boolean,
+  setUploadActive: Function
 }
 
-const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
+const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive, setUploadActive }) => {
   const [filesNames, setFilesNames] = useState<string[]>([]);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -19,7 +20,7 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
     }).catch(function (err: any) {
       console.log(err);
     });
-  }, [uploadActive]);
+  }, []);
 
   const handleRemoveItem = (name: string) => {
     localForage.removeItem(name).then(() => {
@@ -34,11 +35,14 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive }) => {
   }
   const handleRemoveAllPermanently = () => {
     setShowPopup(false);
+
     localForage.clear().then(function () {
       console.log('Database is now empty.');
     }).catch(function (err) {
       console.log(err);
     });
+
+    setUploadActive(false);
   }
 
   return (

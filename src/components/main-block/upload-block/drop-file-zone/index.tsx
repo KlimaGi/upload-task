@@ -11,7 +11,6 @@ const DropFileZone = memo(() => {
 
   const onFilesDrop = useCallback((files: File[]) => {
     setFiles(files);
-    console.log('files--', files);
   }, []);
 
   return (

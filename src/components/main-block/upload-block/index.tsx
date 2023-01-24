@@ -4,15 +4,15 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DropFileZone from './drop-file-zone';
 
 type IUploadBlock = {
-  setUploadActive: Function
+  uploadActive: boolean
 }
 
-const UploadBlock: React.FC<IUploadBlock> = ({ setUploadActive }) => {
-  const [expanded, setExpanded] = useState(false);
+const UploadBlock: React.FC<IUploadBlock> = ({ uploadActive }) => {
+  const [expanded, setExpanded] = useState(uploadActive);
 
   useEffect(() => {
-    setUploadActive(true);
-  }, [expanded]);
+    setExpanded(true);
+  }, [uploadActive]);
 
   return (
     <div className='box-paper' >

@@ -325,8 +325,6 @@ button:focus-visible{
   background-clip: content-box;
   width: 8;
 }
-
-
 .popup--x{
   border-style: none;
   background-color: #ffffff00;
@@ -334,8 +332,7 @@ button:focus-visible{
   top: calc( 6rem - 50vh);
   left: calc(30vw - 1rem);
 }
-
-  
 .green-btn:focus-visible {
   border-style: none;
 }
+ 

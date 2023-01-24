@@ -103,6 +103,3 @@ const PermanentDrawerLeft = () => {
 }
 
 export default PermanentDrawerLeft;
-
-// api uzklausa su axios
-// redux pritaikyti

@@ -23,9 +23,10 @@ const Header = () => {
     const baseURL = "https://jsonplaceholder.typicode.com/users";
     axios.get(`${baseURL}/1`).then((response) => {
       setUserName(response.data.name);
+    }).catch(error => {
+      console.log(error);
     });
   }, [])
-
 
   return (
     <AppBar elevation={0} position="static" style={{ background: theme.palette.primary.light }}>
