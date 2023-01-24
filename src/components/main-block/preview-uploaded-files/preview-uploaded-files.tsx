@@ -7,7 +7,7 @@ import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import localForage from 'localforage';
-import ClearIcon from '@mui/icons-material/Clear';
+import PopupFile from './popup-file';
 
 const PreviewUploadedFiles = () => {
   const [expanded, setExpanded] = useState(false);
@@ -87,29 +87,10 @@ const PreviewUploadedFiles = () => {
 
       </div>
       {
-        preview && <div className='module--wrapper'>
-          <div className='popup-window'>
-
-            <div className='popup--file-name'>
-              <span>{filesNames[currentFileIndex]}</span>
-            </div>
-
-            <div className='popup--content'>
-              <div className='popup-pages'></div>
-              <div className='popup-pages'></div>
-              <div className='popup-pages'></div>
-
-            </div>
-
-          </div>
-          <div>
-            <button
-              className='popup--x'
-              onClick={() => setPreview(false)}>
-              <ClearIcon sx={{ color: '#62727f' }} />
-            </button>
-          </div>
-        </div>
+        preview && <PopupFile
+          fileName={filesNames[currentFileIndex]}
+          setPreview={setPreview}
+        />
       }
     </div>
   )

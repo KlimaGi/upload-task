@@ -3,7 +3,7 @@ import { Box, Paper, Typography, FormControl, Radio, Select, MenuItem } from '@m
 import { useTheme } from '@mui/material/styles';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { UploadBlock } from './upload-block';
-import PreviewUploadedFiles from './preview-uploaded-files';
+import PreviewUploadedFiles from './preview-uploaded-files/preview-uploaded-files';
 import ListOfUploads from './list-of-uploads';
 
 export const MainBlock = () => {
