@@ -1,5 +1,8 @@
 import React, { memo, PropsWithChildren, useRef, useState, useCallback, useEffect } from 'react';
 import localForage from 'localforage';
+import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
+import { setPdf, unsetPdf } from '../../../../features/file-checker/file-checker-slice';
+
 
 export interface DropZoneProps {
   onDragStateChange?: (isDragActive: boolean) => void
@@ -20,6 +23,9 @@ export const DropZone = memo(
       onDragOut,
       onDrop,
     } = props;
+
+    const fileType = useAppSelector(state => state.filetype.value);
+    const dispatch = useAppDispatch();
 
     const [isDragActive, setIsDragActive] = useState(false);
     const dropZoneRef = useRef<null | HTMLDivElement>(null);
@@ -68,6 +74,11 @@ export const DropZone = memo(
         if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
           const file = event.dataTransfer.files;
           localForage.setItem(`${file[0].name}`, file);
+
+          const droppedFileType = file[0].name.split('.')[1];
+
+          if (droppedFileType === 'pdf') dispatch(setPdf());
+          else dispatch(unsetPdf());
 
           onFilesDrop?.(file);
           event.dataTransfer.clearData();
