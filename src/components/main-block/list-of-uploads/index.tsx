@@ -4,15 +4,18 @@ import localForage from 'localforage';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import PopupClear from './popup-clear';
+import { useAppSelector } from '../../../app/hooks';
 
 type IListOfUploads = {
-  uploadActive: boolean,
-  setUploadActive: Function
+  setUploadActive: Function,
+  uploadActive: boolean
 }
 
-const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive, setUploadActive }) => {
+const ListOfUploads: React.FC<IListOfUploads> = ({ setUploadActive, uploadActive }) => {
+  const appearValue = useAppSelector(state => state.appear.value);
   const [filesNames, setFilesNames] = useState<string[]>([]);
   const [showPopup, setShowPopup] = useState(false);
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     localForage.keys().then((keys: string[]) => {
@@ -20,7 +23,9 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive, setUploadActive
     }).catch(function (err: any) {
       console.log(err);
     });
-  }, []);
+  }, [toggle, uploadActive]);
+
+  useEffect(() => { setToggle(appearValue) }, [appearValue])
 
   const handleRemoveItem = (name: string) => {
     localForage.removeItem(name).then(() => {
@@ -28,6 +33,7 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive, setUploadActive
     }).catch(function (err) {
       console.log(err);
     });
+    setToggle(!toggle);
   }
 
   const handleRemoveAll = () => {
@@ -46,7 +52,7 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ uploadActive, setUploadActive
   }
 
   return (
-    <div className=''>
+    <div>
       <Typography variant='body2'>List of uploads</Typography>
       <ul className='ul'>
         {

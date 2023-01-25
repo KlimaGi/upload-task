@@ -3,15 +3,14 @@ import { DropZone } from './drop-zone';
 
 const DropFileZone = memo(() => {
   const [isDropActive, setIsDropActive] = useState(false);
-  const [files, setFiles] = React.useState<File[]>([]);
+  const [filess, setFiless] = React.useState<File[]>([]);
 
   const onDragStateChange = useCallback((dragActive: boolean) => {
     setIsDropActive(dragActive);
   }, []);
 
   const onFilesDrop = useCallback((files: File[]) => {
-    setFiles(files);
-
+    setFiless(files);
   }, []);
 
   return (

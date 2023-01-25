@@ -2,6 +2,7 @@ import React, { memo, PropsWithChildren, useRef, useState, useCallback, useEffec
 import localForage from 'localforage';
 import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
 import { setPdf, unsetPdf } from '../../../../features/file-checker/file-checker-slice';
+import { unsetAppear } from '../../../../features/control-appearness/appear-slice';
 
 
 export interface DropZoneProps {
@@ -24,7 +25,6 @@ export const DropZone = memo(
       onDrop,
     } = props;
 
-    const fileType = useAppSelector(state => state.filetype.value);
     const dispatch = useAppDispatch();
 
     const [isDragActive, setIsDragActive] = useState(false);
@@ -82,6 +82,8 @@ export const DropZone = memo(
 
           onFilesDrop?.(file);
           event.dataTransfer.clearData();
+
+          dispatch(unsetAppear());
         }
       },
       [onDrop, onFilesDrop]

@@ -8,7 +8,6 @@ import { setPdf, unsetPdf } from '../../features/file-checker/file-checker-slice
 const TypeOfDocuments = () => {
   const fileType = useAppSelector(state => state.filetype.value);
   const dispatch = useAppDispatch();
-
   const theme = useTheme();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,8 +19,6 @@ const TypeOfDocuments = () => {
     setSelected(event.target.value);
     dispatch(unsetPdf());
   };
-
-
 
   return (
     <div className='container'>

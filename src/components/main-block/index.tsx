@@ -5,6 +5,7 @@ import PreviewUploadedFiles from './preview-uploaded-files';
 import ListOfUploads from './list-of-uploads';
 import TypeOfDocuments from './type-of-documents';
 
+
 const MainBlock = () => {
   const [uploadActive, setUploadActive] = useState(true);
 
@@ -45,7 +46,7 @@ const MainBlock = () => {
               <UploadBlock uploadActive={uploadActive} />
             </div>
             <div>
-              <PreviewUploadedFiles uploadActive={uploadActive} />
+              <PreviewUploadedFiles />
             </div>
           </div>
         </div>

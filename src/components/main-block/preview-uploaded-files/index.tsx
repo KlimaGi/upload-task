@@ -8,26 +8,20 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import localForage from 'localforage';
 import PopupFile from './popup-file';
+import { useAppSelector } from '../../../app/hooks';
 
-type IPreviewUploadedFiles = {
-  uploadActive: boolean
-}
-
-const PreviewUploadedFiles: React.FC<IPreviewUploadedFiles> = ({ uploadActive }) => {
+const PreviewUploadedFiles = () => {
+  const appearValue = useAppSelector(state => state.appear.value);
   const [expanded, setExpanded] = useState(false);
   const [filesNames, setFilesNames] = useState([]);
   const [currentFileIndex, setCurrentFileIndex] = useState(0);
   const [preview, setPreview] = useState(false);
-  console.log('uploadActive', uploadActive);
+  console.log('expanded', expanded);
+  console.log('appearValue', appearValue);
 
-  const handlePrev = (currentFileIndex: number) => {
-    if (currentFileIndex !== 0) setCurrentFileIndex(currentFileIndex - 1);
-    else setCurrentFileIndex(0);
-  }
-  const handleNext = (currentFileIndex: number) => {
-    if (currentFileIndex < filesNames.length - 1) setCurrentFileIndex(currentFileIndex + 1);
-    else setCurrentFileIndex(filesNames.length - 1);
-  }
+  useEffect(() => {
+    setExpanded(appearValue);
+  }, [appearValue]);
 
   useEffect(() => {
     localForage.keys().then(function (keys: any) {
@@ -38,24 +32,33 @@ const PreviewUploadedFiles: React.FC<IPreviewUploadedFiles> = ({ uploadActive })
     });
   }, [expanded]);
 
+  const handlePrev = (currentFileIndex: number) => {
+    if (currentFileIndex !== 0) setCurrentFileIndex(currentFileIndex - 1);
+    else setCurrentFileIndex(0);
+  }
+  const handleNext = (currentFileIndex: number) => {
+    if (currentFileIndex < filesNames.length - 1) setCurrentFileIndex(currentFileIndex + 1);
+    else setCurrentFileIndex(filesNames.length - 1);
+  }
+
   const handleDownload = () => {
     console.log('handle download');
   }
 
   return (
     <div className='box-paper'>
-      <div className={`accordion ${expanded && 'accordion--preview-block'} `}>
+      <div className={`accordion ${!expanded && 'accordion--preview-block'} `}>
         {
-          !expanded &&
+          expanded &&
           <button className='btn' onClick={() => setExpanded(!expanded)}>
-            <div className={expanded ? 'hide-no-space' : ""}>
+            <div className={expanded ? "" : 'hide-no-space'}>
               <Typography variant='body2'>Preview uploaded files</Typography>
             </div>
           </button>
         }
 
         {
-          expanded
+          !expanded
           && <div>
             <div className='d-flex preview-wrapper'>
               <div className='preview-file-name-container'>
@@ -85,9 +88,9 @@ const PreviewUploadedFiles: React.FC<IPreviewUploadedFiles> = ({ uploadActive })
         }
 
         {
-          expanded
+          !expanded
             ? <span onClick={() => setExpanded(!expanded)} className='accordion-row'> <KeyboardArrowUpIcon />  </span>
-            : <span onClick={() => setExpanded(!expanded)} className='accordion-row'> <KeyboardArrowDownIcon /> </span>
+            : <span onClick={() => setExpanded(expanded)} className='accordion-row'> <KeyboardArrowDownIcon /> </span>
         }
 
       </div>
