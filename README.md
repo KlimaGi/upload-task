@@ -1,5 +1,5 @@
-# ---> at branch styled-components
-You can find styles refactor. Added scss and styles-components
+# ---> merged branch styled-components to master 2023.01.26
+Made styles refactor at different brach. Add scss and styles-components.
 
 
 ## Getting Started with Create React App
