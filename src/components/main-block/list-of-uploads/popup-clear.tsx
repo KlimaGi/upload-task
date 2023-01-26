@@ -1,4 +1,5 @@
-import React, { MouseEventHandler } from 'react'
+import React, { MouseEventHandler } from 'react';
+import styles from './popup-clear-style.module.scss';
 
 type IPopupClear = {
   handleRemoveAllPermanently: MouseEventHandler<HTMLButtonElement>,
@@ -8,15 +9,15 @@ type IPopupClear = {
 const PopupClear: React.FC<IPopupClear> = ({ handleRemoveAllPermanently, setShowPopup }) => {
   return (
     <div className='module--wrapper'>
-      <div className='clear-module'>
+      <div className={styles['clear-module']}>
         <p>Are you sure you want to delete all files? You'll have to start uploading process from the very beginning.</p>
-        <div className='clear-module--btn-container'>
+        <div className={styles['clear-module--btn-container']}>
 
           <button
-            className='green-btn green-btn--outline'
+            className={styles['green-btn--outline']}
             onClick={() => setShowPopup(false)}>Cancel</button>
           <button
-            className='green-btn green-btn--filled'
+            className={styles['green-btn--filled']}
             onClick={handleRemoveAllPermanently}
           >Confirm</button>
         </div>

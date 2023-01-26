@@ -1,0 +1,49 @@
+@import '../../../styles/variables';
+
+.clear-module {
+  height: 9rem;
+  width: 30rem;
+  background-color: $color-white-pr-light;
+  border-radius: 18px;
+  padding: 2rem 1.5rem 1rem;
+  color: $color-grey-pr-main;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.clear-module--btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.3rem;
+  gap: 1rem;
+}
+
+.green-btn {
+  border: 1px solid $color-green-sec-contrast;
+  border-radius: 6px;
+  padding: 10px 24px;
+
+  &:focus-visible {
+    border-style: none;
+  }
+
+  &:hover {
+    box-shadow: 0 0 3px 3px #0fab5a2d;
+  }
+}
+
+.green-btn--outline {
+  @extend .green-btn;
+  background-color: $color-white-pr-light;
+  border: 1px solid $color-green-sec-contrast;
+  color: $color-green-sec-contrast;
+  font-weight: 500;
+}
+
+.green-btn--filled {
+  @extend .green-btn;
+  background-color: $color-green-sec-contrast;
+  color: $color-white-pr-light;
+  font-weight: 500;
+  box-shadow: -1px 5px 8px 2px #0fab5a2d;
+}
