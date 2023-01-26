@@ -1,5 +1,6 @@
 import React, { memo, useState, useCallback } from 'react';
 import { DropZone } from './drop-zone';
+import styles from './index-style.module.scss';
 
 const DropFileZone = memo(() => {
   const [isDropActive, setIsDropActive] = useState(false);
@@ -19,10 +20,14 @@ const DropFileZone = memo(() => {
         onDragStateChange={onDragStateChange}
         onFilesDrop={onFilesDrop}>
 
-        <div className='accordion-item'>
+        <div className={styles['accordion-item']}>
           <h4>Select files</h4>
-          <p>Drop files here or click <button className='btn-link'>browse</button> </p>
+          <p>
+            Drop files here or click
+            <button className={styles['btn-link']}>browse</button>
+          </p>
           <img src='assets/select-file-img.jpg' alt='select file' />
+
         </div>
 
       </DropZone>

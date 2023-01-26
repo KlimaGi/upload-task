@@ -1,5 +1,6 @@
 import React from 'react';
 import ClearIcon from '@mui/icons-material/Clear';
+import styles from './popup-file-style.module.scss';
 
 type IPopupFile = {
   fileName: string,
@@ -9,23 +10,23 @@ type IPopupFile = {
 const PopupFile: React.FC<IPopupFile> = ({ fileName, setPreview }) => {
   return (
     <div className='module--wrapper'>
-      <div className='popup-window'>
+      <div className={styles['popup-window']}>
 
-        <div className='popup--file-name'>
+        <div className={styles['popup--file-name']}>
           <span>{fileName}</span>
         </div>
 
-        <div className='popup--content'>
-          <div className='popup-pages'></div>
-          <div className='popup-pages'></div>
-          <div className='popup-pages'></div>
+        <div className={styles['popup--content']}>
+          <div className={styles['popup-pages']}></div>
+          <div className={styles['popup-pages']}></div>
+          <div className={styles['popup-pages']}></div>
 
         </div>
 
       </div>
       <div>
         <button
-          className='popup--x'
+          className={styles['popup--x']}
           onClick={() => setPreview(false)}>
           <ClearIcon sx={{ color: '#62727f' }} />
         </button>

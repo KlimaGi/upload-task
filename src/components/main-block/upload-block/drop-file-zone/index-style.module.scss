@@ -1,0 +1,28 @@
+@import '../../../../styles/variables';
+
+.accordion-item {
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.accordion-item>img {
+  width: 14rem;
+  margin: 2rem;
+}
+
+.btn-link {
+  border-style: none;
+  cursor: pointer;
+  border-bottom: 1px solid $color-purple-pr-contrast;
+  color: $color-purple-pr-contrast;
+  background-color: #ffffff00;
+  font-size: 1rem;
+  padding-bottom: 1px;
+}
+
+.btn-link:focus-visible {
+  border-style: none;
+}

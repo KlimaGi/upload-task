@@ -4,6 +4,7 @@ import UploadBlock from './upload-block';
 import PreviewUploadedFiles from './preview-uploaded-files';
 import ListOfUploads from './list-of-uploads';
 import TypeOfDocuments from './type-of-documents';
+import styles from './index-style.module.scss';
 
 
 const MainBlock = () => {
@@ -31,7 +32,7 @@ const MainBlock = () => {
         }}
       >
         <div className='d-flex'>
-          <div className='left-box'>
+          <div className={styles['left-box']}>
             <TypeOfDocuments />
             {
               uploadActive &&
@@ -41,7 +42,7 @@ const MainBlock = () => {
             }
           </div>
 
-          <div className='right-box'>
+          <div className={styles['right-box']}>
             <div>
               <UploadBlock uploadActive={uploadActive} />
             </div>

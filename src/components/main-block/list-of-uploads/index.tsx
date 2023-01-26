@@ -5,6 +5,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import PopupClear from './popup-clear';
 import { useAppSelector } from '../../../app/hooks';
+import styles from './index-style.module.scss';
 
 type IListOfUploads = {
   setUploadActive: Function,
@@ -16,6 +17,8 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ setUploadActive, uploadActive
   const [filesNames, setFilesNames] = useState<string[]>([]);
   const [showPopup, setShowPopup] = useState(false);
   const [toggle, setToggle] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const currentLiStyle = (i: number) => currentIndex === i ? 'list-item-active' : 'list-item';
 
   useEffect(() => {
     localForage.keys().then((keys: string[]) => {
@@ -54,30 +57,39 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ setUploadActive, uploadActive
   return (
     <div>
       <Typography variant='body2'>List of uploads</Typography>
-      <ul className='ul'>
+      <ul className={styles.ul}>
         {
           filesNames.length > 0 &&
-          filesNames.map((name) => (
-            <li className='list-item' key={name}>
-              <span>{name}</span>
-              <div className='btn-container'>
-                <button >
-                  <EditOutlinedIcon sx={{ color: '#62727f' }} />
-                </button>
-                <button
-                  onClick={() => handleRemoveItem(name)}
-                >
-                  <DeleteOutlineOutlinedIcon sx={{ color: '#62727f' }} />
-                </button>
-              </div>
-            </li>
+          filesNames.map((name, i) => (
+            <div className='d-flex'>
+
+              <li className={styles[currentLiStyle(i)]} key={name}>
+                <span>{name}</span>
+                <div className='btn-container'>
+                  <button >
+                    <EditOutlinedIcon sx={{ color: '#62727f' }} />
+                  </button>
+                  <button
+                    onClick={() => handleRemoveItem(name)}
+                  >
+                    <DeleteOutlineOutlinedIcon sx={{ color: '#62727f' }} />
+                  </button>
+                </div>
+              </li>
+              {
+                i === currentIndex
+                  ? <span className={styles.main}>Main</span>
+                  : <span className={styles['sub-text']}>Attachment</span>
+              }
+
+            </div>
           ))
         }
       </ul>
-      <div className='clear-btn-container'>
+      <div className={styles['clear-btn-container']}>
         <button
           onClick={handleRemoveAll}
-          className='btn-clear'
+          className={styles['btn-clear']}
         >Clear all</button>
       </div>
       {

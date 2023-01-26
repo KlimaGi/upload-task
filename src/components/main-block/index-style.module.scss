@@ -1,0 +1,16 @@
+.left-box {
+  flex: 2;
+  height: 10rem;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.right-box {
+  flex: 3;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
