@@ -1,0 +1,54 @@
+@import '../../../styles/variables';
+
+
+ul.ul {
+  list-style-type: none;
+
+
+  .list-item {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    box-shadow: 0 0 3px 1px $color-light-grey;
+    border-radius: 8px;
+    color: $color-grey-pr-main;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+
+    &:active {
+      background-color: $color-purple-bg-sec-dark;
+    }
+  }
+
+  .list-item-active {
+    @extend .list-item;
+    background-color: $color-purple-bg-sec-dark;
+  }
+
+}
+
+.sub-text {
+  font-size: small;
+  align-self: center;
+  width: 4.5rem;
+  color: $color-grey-light-sec-main;
+  padding-right: 0.5rem;
+}
+
+.main {
+  @extend .sub-text;
+  color: $color-grey-black-pr-dark;
+}
+
+.clear-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-clear {
+  border-style: none;
+  border-bottom: 1px solid $color-grey-black-pr-dark;
+  background-color: #ffffff00;
+  margin: 0.5rem;
+}

@@ -9,6 +9,7 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import localForage from 'localforage';
 import PopupFile from './popup-file';
 import { useAppSelector } from '../../../app/hooks';
+import styles from './index-style.module.scss';
 
 const PreviewUploadedFiles = () => {
   const appearValue = useAppSelector(state => state.appear.value);
@@ -60,8 +61,8 @@ const PreviewUploadedFiles = () => {
         {
           !expanded
           && <div>
-            <div className='d-flex preview-wrapper'>
-              <div className='preview-file-name-container'>
+            <div className={styles['preview-wrapper']}>
+              <div className={styles['preview-file-name-container']}>
 
                 <button onClick={() => handlePrev(currentFileIndex)}>
                   <KeyboardArrowLeftIcon sx={{ color: '#62727f', fontWeight: 100 }} />
@@ -83,14 +84,16 @@ const PreviewUploadedFiles = () => {
                   <FileDownloadOutlinedIcon sx={{ color: '#62727f' }} /></button>
               </div>
             </div>
-            <div className='preview-block'> </div>
+            <div className={styles['preview-block']}> </div>
           </div>
         }
 
         {
           !expanded
-            ? <span onClick={() => setExpanded(!expanded)} className='accordion-row'> <KeyboardArrowUpIcon />  </span>
-            : <span onClick={() => setExpanded(expanded)} className='accordion-row'> <KeyboardArrowDownIcon /> </span>
+            ? <span onClick={() => setExpanded(!expanded)} className='accordion-row'>       <KeyboardArrowUpIcon />
+            </span>
+            : <span onClick={() => setExpanded(expanded)} className='accordion-row'>  <KeyboardArrowDownIcon />
+            </span>
         }
 
       </div>
