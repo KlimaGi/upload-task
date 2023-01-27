@@ -10,7 +10,7 @@ const TypeOfDocuments = () => {
   const dispatch = useAppDispatch();
   const theme = useTheme();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = () => {
     dispatch(setPdf());
   };
 

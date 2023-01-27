@@ -2,14 +2,9 @@ import React, { useEffect, useState } from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DropFileZone from './drop-file-zone';
-import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { useAppSelector } from '../../../app/hooks';
 
-
-type IUploadBlock = {
-  uploadActive: boolean
-}
-
-const UploadBlock: React.FC<IUploadBlock> = ({ uploadActive }) => {
+const UploadBlock = () => {
   const appearValue = useAppSelector(state => state.appear.value);
   const [expanded, setExpanded] = useState(appearValue);
 

@@ -1,6 +1,6 @@
 import React, { memo, PropsWithChildren, useRef, useState, useCallback, useEffect } from 'react';
 import localForage from 'localforage';
-import { useAppSelector, useAppDispatch } from '../../../../app/hooks';
+import { useAppDispatch } from '../../../../app/hooks';
 import { setPdf, unsetPdf } from '../../../../features/file-checker/file-checker-slice';
 import { unsetAppear } from '../../../../features/control-appearness/appear-slice';
 
@@ -31,7 +31,7 @@ export const DropZone = memo(
     const dropZoneRef = useRef<null | HTMLDivElement>(null);
 
     const handleDragIn = useCallback(
-      (event: any) => {
+      (event: unknown) => {
         event.preventDefault();
         event.stopPropagation();
         onDragIn?.();
@@ -44,7 +44,7 @@ export const DropZone = memo(
     );
 
     const handleDragOut = useCallback(
-      (event: any) => {
+      (event: unknown) => {
         event.preventDefault();
         event.stopPropagation();
         onDragOut?.();
@@ -54,7 +54,7 @@ export const DropZone = memo(
     );
 
     const handleDrag = useCallback(
-      (event: any) => {
+      (event: unknown) => {
         event.preventDefault();
         event.stopPropagation();
         onDrag?.();
@@ -64,7 +64,7 @@ export const DropZone = memo(
     );
 
     const handleDrop = useCallback(
-      (event: any) => {
+      (event: unknown) => {
         event.preventDefault()
         event.stopPropagation()
 

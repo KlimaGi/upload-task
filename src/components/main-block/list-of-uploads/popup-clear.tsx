@@ -3,7 +3,7 @@ import styles from './popup-clear-style.module.scss';
 
 type IPopupClear = {
   handleRemoveAllPermanently: MouseEventHandler<HTMLButtonElement>,
-  setShowPopup: Function
+  setShowPopup: (arg0: boolean) => void
 }
 
 const PopupClear: React.FC<IPopupClear> = ({ handleRemoveAllPermanently, setShowPopup }) => {

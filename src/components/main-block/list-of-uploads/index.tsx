@@ -8,7 +8,7 @@ import { useAppSelector } from '../../../app/hooks';
 import styles from './index-style.module.scss';
 
 type IListOfUploads = {
-  setUploadActive: Function,
+  setUploadActive: (arg0: boolean) => void,
   uploadActive: boolean
 }
 
@@ -17,14 +17,15 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ setUploadActive, uploadActive
   const [filesNames, setFilesNames] = useState<string[]>([]);
   const [showPopup, setShowPopup] = useState(false);
   const [toggle, setToggle] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentLiStyle = (i: number) => currentIndex === i ? 'list-item-active' : 'list-item';
 
   useEffect(() => {
     localForage.keys().then((keys: string[]) => {
       setFilesNames(keys);
-    }).catch(function (err: any) {
-      console.log(err);
+    }).catch((err) => {
+      console.log(err as Error);
     });
   }, [toggle, uploadActive]);
 
@@ -33,8 +34,8 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ setUploadActive, uploadActive
   const handleRemoveItem = (name: string) => {
     localForage.removeItem(name).then(() => {
       console.log('Key is cleared!');
-    }).catch(function (err) {
-      console.log(err);
+    }).catch((err) => {
+      console.log(err as Error);
     });
     setToggle(!toggle);
   }

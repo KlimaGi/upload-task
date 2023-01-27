@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { memo, useState, useCallback } from 'react';
 import { DropZone } from './drop-zone';
 import styles from './index-style.module.scss';

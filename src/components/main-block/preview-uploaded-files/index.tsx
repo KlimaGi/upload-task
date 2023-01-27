@@ -25,11 +25,11 @@ const PreviewUploadedFiles = () => {
   }, [appearValue]);
 
   useEffect(() => {
-    localForage.keys().then(function (keys: any) {
+    localForage.keys().then((keys) => {
       // An array of all the key names.
-      setFilesNames(keys);
-    }).catch(function (err: any) {
-      console.log(err);
+      return setFilesNames(keys as never);
+    }).catch((err) => {
+      console.log(err as Error);
     });
   }, [expanded]);
 

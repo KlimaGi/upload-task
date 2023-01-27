@@ -78,7 +78,7 @@ const PermanentDrawerLeft = () => {
           </Tabs>
 
           <List sx={{ paddingTop: 0 }}>
-            {['Inbox', 'Sent', 'Drafts'].map((text, index) => (
+            {['Inbox', 'Sent', 'Drafts'].map((text) => (
               <ListItem key={text} sx={{ margin: 0, padding: 0 }} >
                 <ListItemButton sx={{ pl: 9 }}>
                   <ListItemIcon sx={{ minWidth: '25px' }}>

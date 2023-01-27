@@ -4,7 +4,7 @@ import styles from './popup-file-style.module.scss';
 
 type IPopupFile = {
   fileName: string,
-  setPreview: Function
+  setPreview(arg0: boolean): void
 }
 
 const PopupFile: React.FC<IPopupFile> = ({ fileName, setPreview }) => {
