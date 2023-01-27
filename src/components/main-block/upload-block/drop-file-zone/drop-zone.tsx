@@ -4,14 +4,13 @@ import { useAppDispatch } from '../../../../app/hooks';
 import { setPdf, unsetPdf } from '../../../../features/file-checker/file-checker-slice';
 import { unsetAppear } from '../../../../features/control-appearness/appear-slice';
 
-
 export interface DropZoneProps {
   onDragStateChange?: (isDragActive: boolean) => void
   onDrag?: () => void
   onDragIn?: () => void
   onDragOut?: () => void
   onDrop?: () => void
-  onFilesDrop?: (files: File[]) => void
+  onFilesDrop?: (files: File[] | FileList) => void
 }
 
 export const DropZone = memo(
@@ -31,12 +30,12 @@ export const DropZone = memo(
     const dropZoneRef = useRef<null | HTMLDivElement>(null);
 
     const handleDragIn = useCallback(
-      (event: unknown) => {
+      (event: DragEvent) => {
         event.preventDefault();
         event.stopPropagation();
         onDragIn?.();
 
-        if (event.dataTransfer.items && event.dataTransfer.items.length > 0) {
+        if (event.dataTransfer?.items && event.dataTransfer.items.length > 0) {
           setIsDragActive(true);
         }
       },
@@ -44,7 +43,7 @@ export const DropZone = memo(
     );
 
     const handleDragOut = useCallback(
-      (event: unknown) => {
+      (event: DragEvent) => {
         event.preventDefault();
         event.stopPropagation();
         onDragOut?.();
@@ -54,7 +53,7 @@ export const DropZone = memo(
     );
 
     const handleDrag = useCallback(
-      (event: unknown) => {
+      (event: DragEvent) => {
         event.preventDefault();
         event.stopPropagation();
         onDrag?.();
@@ -64,14 +63,14 @@ export const DropZone = memo(
     );
 
     const handleDrop = useCallback(
-      (event: unknown) => {
+      (event: DragEvent) => {
         event.preventDefault()
         event.stopPropagation()
 
         setIsDragActive(false);
         onDrop?.();
 
-        if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
+        if (event.dataTransfer?.files && event.dataTransfer.files.length > 0) {
           const file = event.dataTransfer.files;
           localForage.setItem(`${file[0].name}`, file);
 

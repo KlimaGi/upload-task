@@ -5,13 +5,13 @@ import styles from './index-style.module.scss';
 
 const DropFileZone = memo(() => {
   const [isDropActive, setIsDropActive] = useState(false);
-  const [filess, setFiless] = React.useState<File[]>([]);
+  const [filess, setFiless] = React.useState<File[] | FileList>([]);
 
   const onDragStateChange = useCallback((dragActive: boolean) => {
     setIsDropActive(dragActive);
   }, []);
 
-  const onFilesDrop = useCallback((files: File[]) => {
+  const onFilesDrop = useCallback((files: File[] | FileList) => {
     setFiless(files);
   }, []);
 
