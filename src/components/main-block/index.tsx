@@ -44,7 +44,7 @@ const MainBlock = () => {
 
           <div className={styles['right-box']}>
             <div>
-              <UploadBlock uploadActive={uploadActive} />
+              <UploadBlock />
             </div>
             <div>
               <PreviewUploadedFiles />

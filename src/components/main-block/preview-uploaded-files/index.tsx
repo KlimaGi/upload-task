@@ -48,7 +48,8 @@ const PreviewUploadedFiles = () => {
 
   return (
     <div className='box-paper'>
-      <div className={`accordion ${!expanded && 'accordion--preview-block'} `}>
+      <div
+        className={`accordion ${!expanded && 'accordion--preview-block'} `}>
         {
           expanded &&
           <button className='btn' onClick={() => setExpanded(!expanded)}>
@@ -90,7 +91,8 @@ const PreviewUploadedFiles = () => {
 
         {
           !expanded
-            ? <span onClick={() => setExpanded(!expanded)} className='accordion-row'>       <KeyboardArrowUpIcon />
+            ? <span onClick={() => setExpanded(!expanded)} className='accordion-row'>
+              <KeyboardArrowUpIcon />
             </span>
             : <span onClick={() => setExpanded(expanded)} className='accordion-row'>  <KeyboardArrowDownIcon />
             </span>

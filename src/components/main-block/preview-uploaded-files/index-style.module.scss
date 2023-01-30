@@ -9,6 +9,8 @@
 
 .preview-file-name-container {
   display: flex;
+  flex: 2;
+  justify-content: center;
   color: $color-grey-pr-main;
   font-weight: bold;
   align-self: center;
