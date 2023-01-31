@@ -14,12 +14,11 @@ type IListOfUploads = {
 
 const ListOfUploads: React.FC<IListOfUploads> = ({ setUploadActive, uploadActive }) => {
   const appearValue = useAppSelector(state => state.appear.value);
+  const currentFileIndex = useAppSelector(state => state.mainFileIndex.value);
   const [filesNames, setFilesNames] = useState<string[]>([]);
   const [showPopup, setShowPopup] = useState(false);
   const [toggle, setToggle] = useState(true);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const currentLiStyle = (i: number) => currentIndex === i ? 'list-item-active' : 'list-item';
+  const currentLiStyle = (i: number) => currentFileIndex === i ? 'list-item-active' : 'list-item';
 
   useEffect(() => {
     localForage.keys().then((keys: string[]) => {
@@ -78,7 +77,7 @@ const ListOfUploads: React.FC<IListOfUploads> = ({ setUploadActive, uploadActive
                 </div>
               </li>
               {
-                i === currentIndex
+                i === currentFileIndex
                   ? <span className={styles.main}>Main</span>
                   : <span className={styles['sub-text']}>Attachment</span>
               }

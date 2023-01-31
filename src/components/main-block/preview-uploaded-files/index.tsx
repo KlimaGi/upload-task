@@ -8,14 +8,17 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import localForage from 'localforage';
 import PopupFile from './popup-file';
-import { useAppSelector } from '../../../app/hooks';
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { nextIndex, prevIndex } from '../../../features/main-file/main-file-index-slice';
 import styles from './index-style.module.scss';
 
 const PreviewUploadedFiles = () => {
   const appearValue = useAppSelector(state => state.appear.value);
+  const currentFileIndex = useAppSelector(state => state.mainFileIndex.value);
+  const dispatch = useAppDispatch();
+
   const [expanded, setExpanded] = useState(false);
   const [filesNames, setFilesNames] = useState([]);
-  const [currentFileIndex, setCurrentFileIndex] = useState(0);
   const [preview, setPreview] = useState(false);
   console.log('expanded', expanded);
   console.log('appearValue', appearValue);
@@ -34,12 +37,12 @@ const PreviewUploadedFiles = () => {
   }, [expanded]);
 
   const handlePrev = (currentFileIndex: number) => {
-    if (currentFileIndex !== 0) setCurrentFileIndex(currentFileIndex - 1);
-    else setCurrentFileIndex(0);
+    if (currentFileIndex !== 0) dispatch(prevIndex())
+
   }
   const handleNext = (currentFileIndex: number) => {
-    if (currentFileIndex < filesNames.length - 1) setCurrentFileIndex(currentFileIndex + 1);
-    else setCurrentFileIndex(filesNames.length - 1);
+    if (currentFileIndex < filesNames.length - 1)
+      dispatch(nextIndex());
   }
 
   const handleDownload = () => {
