@@ -6,12 +6,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  img {
+    width: 14rem;
+    margin: 2rem;
+  }
 }
 
-.accordion-item>img {
-  width: 14rem;
-  margin: 2rem;
-}
+
 
 .btn-link {
   border-style: none;
@@ -21,8 +23,8 @@
   background-color: #ffffff00;
   font-size: 1rem;
   padding-bottom: 1px;
-}
 
-.btn-link:focus-visible {
-  border-style: none;
+  &:focus-visible {
+    border-style: none;
+  }
 }

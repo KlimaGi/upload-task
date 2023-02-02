@@ -28,29 +28,31 @@ const MainBlock = () => {
           background: 'primary.light',
           borderRadius: '34px',
           height: '90%',
-          width: '95%'
+          width: '95%',
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' }
         }}
       >
-        <div className='d-flex'>
-          <div className={styles['left-box']}>
-            <TypeOfDocuments />
-            {
-              uploadActive &&
-              <div className='container'>
-                <ListOfUploads setUploadActive={setUploadActive} uploadActive={uploadActive} />
-              </div>
-            }
-          </div>
 
-          <div className={styles['right-box']}>
-            <div>
-              <UploadBlock />
+        <div className={styles['left-box']}>
+          <TypeOfDocuments />
+          {
+            uploadActive &&
+            <div className='container'>
+              <ListOfUploads setUploadActive={setUploadActive} uploadActive={uploadActive} />
             </div>
-            <div>
-              <PreviewUploadedFiles />
-            </div>
+          }
+        </div>
+
+        <div className={styles['right-box']}>
+          <div>
+            <UploadBlock />
+          </div>
+          <div>
+            <PreviewUploadedFiles />
           </div>
         </div>
+
 
       </Paper>
     </Box>
